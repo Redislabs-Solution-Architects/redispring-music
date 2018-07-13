@@ -63,49 +63,60 @@ brew install maven
 
 ## Running the demo locally
 
-1. Clone the repository:
-```
-git clone https://github.com/Redislabs-Solution-Architects/redispring-music.git
-```
-1. Configure the Redis database connection  
-If you need to specify host and port for your Redis database, add these entries to a `application.properties` file at the root of the project:
-```
-spring.redis.host=myhost
-spring.redis.port=myport
-```
-2. Run the app  
-```
-mvn spring-boot:run 
-```
-3. Add an album through the REST API:  
-```
-curl -i -X PUT -H "Content-Type:application/json" -d "{  \"id\": \"1\",  \"title\": \"The Royal Scam\", \"artist\": \"Steely Dan\", \"genre\": \"Rock\", \"year\": \"1976\", \"cover\": \"https://bit.ly/2NNT4nQ\" }" http://localhost:8080/albums
-```
-4. View the albums in the UI  
-In a browser go to  http://localhost:8080
-5. Use `redis-cli` to inspect the entries created  
-```
-redis-cli keys *
-redis-cli type album
-redis-cli smembers album
-redis-cli hgetall album:1
-```
-6. Enable Actuator endpoints  
-Add the following entries to `application.properties`:
-```
-management.health.redis.enabled=true
-management.endpoints.web.exposure.include=*
-management.endpoint.health.show-details=always
-```
-Restart the app and inspect these endpoints:
-```
-http://localhost:8080/actuator/beans
-http://localhost:8080/actuator/configprops
-http://localhost:8080/actuator/health
-```
-*What Redis client is the app using?*  
-*What connection parameters is the app using?*  
-*How can we change these (e.g. Redis port number)?*
+
+1. Clone the repository:  
+   ```
+   git clone https://github.com/Redislabs-Solution-Architects/redispring-music.git
+   ```
+
+2. Configure the Redis database connection (optional)
+
+   If you need to specify host and port for your Redis database, add these entries to a `application.properties` file at the root of the project:
+   ```
+   spring.redis.host=myhost
+   spring.redis.port=myport
+   ```
+
+3. Run the app
+   ```
+   mvn spring-boot:run 
+   ```
+
+4. Add an album through the REST API:
+   ```
+   curl -i -X PUT -H "Content-Type:application/json" -d "{  \"id\": \"1\",  \"title\": \"The Royal Scam\", \"artist\": \"Steely Dan\", \"genre\": \"Rock\", \"year\": \"1976\", \"cover\": \"https://bit.ly/2NNT4nQ\" }" http://localhost:8080/albums
+   ```
+
+5. View the albums in the UI  
+   ```
+   http://localhost:8080
+   ```
+
+6. Use `redis-cli` to inspect the entries created
+   ```
+   redis-cli keys *
+   redis-cli type album
+   redis-cli smembers album
+   redis-cli hgetall album:1
+   ```
+
+7. Enable Actuator endpoints
+
+   Add the following entries to `application.properties`:
+   ```
+   management.health.redis.enabled=true
+   management.endpoints.web.exposure.include=*
+   management.endpoint.health.show-details=always
+   ```
+   Restart the app and inspect these endpoints:
+   ```
+   http://localhost:8080/actuator/beans
+   http://localhost:8080/actuator/configprops
+   http://localhost:8080/actuator/health
+   ```
+   *What Redis client is the app using?*  
+   *What connection parameters is the app using?*  
+   *How can we change these (e.g. Redis port number)?*
 
 
 ## Deploy the app to Pivotal Application Service
