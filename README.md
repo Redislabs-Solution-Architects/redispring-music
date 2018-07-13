@@ -2,7 +2,7 @@
 This project is a Spring Boot app that can be run locally with a Redis database and then deployed to Pivotal Application Service (PAS) without any code changes.
 
 ## Architecture
-The [Spring Music app](https://github.com/jruaux/spring-music.git) is a 3-tier web application built with Angular JS for the frontend, Spring Boot for the controller, and Redis for the backend.
+The [RediSpring Music app](https://github.com/Redislabs-Solution-Architects/redispring-music) is a 3-tier web application built with Angular JS for the frontend, Spring Boot for the controller, and Redis for the backend.
 
 ### Domain Model
 We have a single class representing a music album:
@@ -62,6 +62,11 @@ brew install maven
 ```
 
 ## Running the demo locally
+
+0. Clone the repository:
+```
+git clone https://github.com/Redislabs-Solution-Architects/redispring-music.git
+```
 
 1. Configure the Redis database connection
 If you need to specify host and port for your Redis database, add these entries to a `application.properties` file at the root of the project:
