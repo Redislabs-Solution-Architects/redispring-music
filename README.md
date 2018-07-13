@@ -169,22 +169,20 @@ cf bind-service <app name> <service name>
 cf restart
 ```
 
-### High Availability
 
-#### Kill the app
+### Apps Manager
+Access Apps Manager using your browser:
+* For SA1: https://apps.sys.sa1.pcf.redis.ninja
+* For SA2: https://apps.sys.sa1.pcf.redis.ninja
 
-Trigger a system exit in the current instance of the app by navigating to your.app.url/errors/kill
-Try accessing your app: you cannot. Try again in a few seconds: PAS has detected that your app crashed and restarted it.
+Inspect application parameters, including environment variables.
+*Which environment variable contains the Redis Enterprise access info?*
+ 
+### Scale the app
+Scale the application so that you have 3 instances of the app running:
+* Use the cf CLI
+* or Apps Manager
 
-#### Scale the app
-
-Issue this command to start multiple instances of the app:
-```shell
-cf scale redispring-music -i 3
-```
-
-You should now have 3 instances of the app running:
-```shell
-cf app redispring-music
-```
+Access the app multiple times then inspect the app logs (cf CLI or Apps Manager).
+*What kind of routing is taking place for your multiple requests?*   
 Requests to the app are now handled in a round-robin fashion across these 3 instances. If one of these instances were to fail, the requests would be rerouted to the remaining instances without any interruption of service.
