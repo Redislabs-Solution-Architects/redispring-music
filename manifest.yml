@@ -1,0 +1,4 @@
+applications:
+- name: redispring-music
+  memory: 1024M
+  path: target/redispring-music-0.0.1-SNAPSHOT.jar
