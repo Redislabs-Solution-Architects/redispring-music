@@ -77,7 +77,7 @@ mvn spring-boot:run
 
 3. Add an album through the REST API:
 ```
-curl -i -X PUT -H "Content-Type:application/json" -d "{  \"id\": \"1\",  \"title\": \"The Royal Scam\", \"artist\": \"Steely Dan\", \"genre\": \"Rock\", \"year\": \"1976\" }" http://localhost:8080/albums
+curl -i -X PUT -H "Content-Type:application/json" -d "{  \"id\": \"1\",  \"title\": \"The Royal Scam\", \"artist\": \"Steely Dan\", \"genre\": \"Rock\", \"year\": \"1976\", \"cover\": \"https://bit.ly/2NNT4nQ\" }" http://localhost:8080/albums
 ```
 
 4. View the albums in the UI
