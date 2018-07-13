@@ -63,41 +63,34 @@ brew install maven
 
 ## Running the demo locally
 
-0. Clone the repository:
+1. Clone the repository:
 ```
 git clone https://github.com/Redislabs-Solution-Architects/redispring-music.git
 ```
-
-1. Configure the Redis database connection
+1. Configure the Redis database connection  
 If you need to specify host and port for your Redis database, add these entries to a `application.properties` file at the root of the project:
 ```
 spring.redis.host=myhost
 spring.redis.port=myport
 ```
-
-2. Run the app
+2. Run the app  
 ```
 mvn spring-boot:run 
 ```
-
-3. Add an album through the REST API:
+3. Add an album through the REST API:  
 ```
 curl -i -X PUT -H "Content-Type:application/json" -d "{  \"id\": \"1\",  \"title\": \"The Royal Scam\", \"artist\": \"Steely Dan\", \"genre\": \"Rock\", \"year\": \"1976\", \"cover\": \"https://bit.ly/2NNT4nQ\" }" http://localhost:8080/albums
 ```
-
-4. View the albums in the UI
+4. View the albums in the UI  
 In a browser go to  http://localhost:8080
-
-5. Use `redis-cli` to inspect the entries created
+5. Use `redis-cli` to inspect the entries created  
 ```
 redis-cli keys *
 redis-cli type album
 redis-cli smembers album
 redis-cli hgetall album:1
 ```
-
-6. Enable Actuator endpoints
-
+6. Enable Actuator endpoints  
 Add the following entries to `application.properties`:
 ```
 management.health.redis.enabled=true
