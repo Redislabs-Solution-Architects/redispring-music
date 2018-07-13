@@ -1,4 +1,4 @@
-# redispring-music
+# RediSpring Music
 This project is a Spring Boot app that can be run locally with a Redis database and then deployed to Pivotal Application Service (PAS) without any code changes.
 
 ## Architecture
